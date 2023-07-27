@@ -1,25 +1,34 @@
-import logo from './logo.svg';
-import './App.css';
+import React, { useState } from 'react'
+import Add from './pages/Add';
+import Show from './pages/Show';
+import About from './pages/About';
+import axios from 'axios';
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+
+const App = () => {
+  const [user,setUser]=useState([]);
+
+const submit=(e)=>{
+  e.preventDefault();
+  const name=e.target.name.value;
+  const age=e.target.age.value;
+
+  const newUser={name,age}; 
+  setUser([newUser,...user]);
+console.log("submitted",newUser);
+e.target.name.value="";
+e.target.age.value="";
 }
 
-export default App;
+
+  return (
+    <>
+
+<Add submit={submit}/>
+{user.length===0?<h1>no user to show</h1>:<Show user={user}/>}
+
+    </>
+  )
+}
+
+export default App
