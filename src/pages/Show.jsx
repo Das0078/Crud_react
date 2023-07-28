@@ -1,6 +1,6 @@
 import React from 'react'
 
-const Show = ({user}) => {
+const Show = ({user,edit,del}) => {
 
   return (
     <section>
@@ -10,6 +10,8 @@ const Show = ({user}) => {
     <tr>
       <th>Name</th>
       <th>Age</th>
+      <th>Settings</th>
+
     </tr>
 {user.map(us=>{
   return(
@@ -17,6 +19,8 @@ const Show = ({user}) => {
    <tr>
     <td>{us.name}</td>
     <td>{us.age}</td>
+    <td><button onClick={edit}>Edit</button><button onClick={()=>del(us.age)}>Delete</button></td>
+
    </tr>
     
   )

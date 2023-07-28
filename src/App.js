@@ -19,13 +19,20 @@ console.log("submitted",newUser);
 e.target.name.value="";
 e.target.age.value="";
 }
-
-
+const edit=()=>{
+  alert("edit........")
+}
+const del=(age)=>{
+ const updatedUser=user.filter(curEle=>{
+  return curEle.age!=age;
+ })
+ setUser(updatedUser);
+}
   return (
     <>
 
 <Add submit={submit}/>
-{user.length===0?<h1>no user to show</h1>:<Show user={user}/>}
+{user.length===0?<h1>no user to show</h1>:<Show user={user} edit={edit} del={del}/>}
 
     </>
   )
