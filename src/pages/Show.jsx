@@ -7,21 +7,26 @@ const Show = ({user,edit,del}) => {
     
 <h1>Users</h1>
   {<table border="1px">
-    <tr>
+  <thead>
+  <tr>
       <th>Name</th>
       <th>Age</th>
       <th>Settings</th>
 
     </tr>
-{user.map(us=>{
+  </thead>
+
+{user.map((us,idx)=>{
   return(
- 
-   <tr>
+ <tbody key={us.age}>
+ <tr>
     <td>{us.name}</td>
     <td>{us.age}</td>
-    <td><button onClick={edit}>Edit</button><button onClick={()=>del(us.age)}>Delete</button></td>
+    <td><button onClick={()=>edit(us,idx)}>Edit</button><button onClick={()=>del(us.age)}>Delete</button></td>
 
    </tr>
+ </tbody>
+
     
   )
 })}
